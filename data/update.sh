@@ -11,11 +11,14 @@ if [ "$latesthash" != "$lasthash" ]; then
 
 	# Fetch web application source
   	wget https://github.com/auth0/psaas-devops-exercise/archive/master.zip -P /etc/psaas-devops-exercise/
-  	unzip -o /etc/psaas-devops-exercise/master.zip -d /etc/psaas-devops-exercise/
-  	cd /etc/psaas-devops-exercise/psaas-devops-exercise-master
 
   	# Update stored commit hash with the most recent on source repo
   	curl https://api.github.com/repos/auth0/psaas-devops-exercise/branches/master | jq '.commit.sha' >> /var/psaas-devops-exercise/lasthash.log
+
+  	# Unzip the source code
+  	unzip -o /etc/psaas-devops-exercise/master.zip -d /etc/psaas-devops-exercise/
+  	cd /etc/psaas-devops-exercise/psaas-devops-exercise-master
+
 
   	# Build Docker web application
   	docker build -t auth0/psaas-devops-exercise:latest .
