@@ -6,18 +6,17 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
   		sudo su
 
+  		# Create required directories
+  		mkdir /var/psaas-devops-exercise /etc/psaas-devops-exercise
+
   		# Install required tools
   		apt update
-  		apt install docker.io unzip nginx -y
+  		apt install docker.io unzip nginx jq -y
 
-  		# Fetch web application
-  		wget https://github.com/auth0/psaas-devops-exercise/archive/master.zip
-  		unzip master.zip
-  		cd psaas-devops-exercise-master
-
-  		# Build and run Docker application
-  		docker build -t auth0/psaas-devops-exercise .
-  		docker run -p 8080:3000 -d auth0/psaas-devops-exercise
+  		# Copy service files for auto upgrade and start timer
+  		cp /data/psaas-update* /etc/systemd/system/
+  		systemctl daemon-reload
+  		systemctl start psaas-update.timer
 
   		# Configure nginx to act as reverse proxy for web application
   		cp /data/default /etc/nginx/sites-available/default

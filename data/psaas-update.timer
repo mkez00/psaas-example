@@ -1,0 +1,9 @@
+[Unit]
+Description=PSaaS Web Application Update Timer
+
+[Timer]
+OnUnitActiveSec=60s
+OnBootSec=10s
+
+[Install]
+WantedBy=timers.target

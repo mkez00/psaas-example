@@ -1,0 +1,6 @@
+[Unit]
+Description=PSaaS Web Application Update Service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /data/update.sh
