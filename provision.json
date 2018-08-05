@@ -1,0 +1,34 @@
+
+{
+	"builders": [
+		{
+		  "type": "virtualbox-ovf",
+		  "source_path": "bionic-server-cloudimg-amd64.ova",
+		  "ssh_username": "packer",
+		  "ssh_password": "packer",
+		  "ssh_wait_timeout": "10000s",
+		  "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+		  "vboxmanage": [
+	        [
+	          "modifyvm",
+	          "{{.Name}}",
+	          "--memory",
+	          "2048"
+	        ],
+	        [
+	          "modifyvm",
+	          "{{.Name}}",
+	          "--cpus",
+	          "4"
+	        ],
+	        [
+	        	"storagectl",
+	        	"{{.Name}}",
+	        	"--name",
+	        	"Floppy",
+	        	"--remove"
+	        ]
+	      ]
+		}
+	]
+}
