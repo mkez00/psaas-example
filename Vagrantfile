@@ -14,8 +14,10 @@ Vagrant.configure("2") do |config|
   		apt install docker.io unzip nginx jq -y
 
   		# Copy service files for auto upgrade and start timer
+  		cp /data/update.sh /etc/psaas-devops-exercise/update.sh
   		cp /data/psaas-update* /etc/systemd/system/
   		systemctl daemon-reload
+  		systemctl enable psaas-update.timer
   		systemctl start psaas-update.timer
 
   		# Configure nginx to act as reverse proxy for web application

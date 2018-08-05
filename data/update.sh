@@ -13,7 +13,7 @@ if [ "$latesthash" != "$lasthash" ]; then
   	wget https://github.com/auth0/psaas-devops-exercise/archive/master.zip -P /etc/psaas-devops-exercise/
 
   	# Update stored commit hash with the most recent on source repo
-  	curl https://api.github.com/repos/auth0/psaas-devops-exercise/branches/master | jq '.commit.sha' >> /var/psaas-devops-exercise/lasthash.log
+  	curl https://api.github.com/repos/auth0/psaas-devops-exercise/branches/master | jq '.commit.sha' > /var/psaas-devops-exercise/lasthash.log
 
   	# Unzip the source code
   	unzip -o /etc/psaas-devops-exercise/master.zip -d /etc/psaas-devops-exercise/
@@ -33,5 +33,11 @@ if [ "$latesthash" != "$lasthash" ]; then
   	echo "Update complete"
 else
 	echo "No update required"
+
+	process=$(docker ps | grep auth0/psaas-devops-exercise)
+	if [ -z "$process" ]; then
+		# This assumes there is only one container running in Docker...can be dangerous but works for this example
+		docker start $(docker ps -a -q)
+	fi
 fi
 
