@@ -34,6 +34,9 @@ if [ "$latesthash" != "$lasthash" ]; then
 else
 	echo "No update required"
 
+	# If the docker container is not running (ie. after a restart).  Simply start it.  
+	# This should be another SystemD service if it were to be done in a production environment.  For the sake of this exercise and not cluttering the 
+	# repo too much, it will do the trick if the VM is rebooted.
 	process=$(docker ps | grep auth0/psaas-devops-exercise)
 	if [ -z "$process" ]; then
 		# This assumes there is only one container running in Docker...can be dangerous but works for this example
