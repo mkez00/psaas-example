@@ -8,6 +8,11 @@ Auto Upgrade
 
 The appliance will automatically poll the master branch of the GitHub repository for changes.  When a new commit is applied to master the appliance will automatically upgrade the Docker image and redeploy the application.  This service is invoked every 60 seconds.
 
+Port Configuration
+-
+
+Login to the appliance and run the following to update the port the application is being served on: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh update-port <PORT_NUMBER>`
+
 Testing with Vagrant
 =
 
