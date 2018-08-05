@@ -24,5 +24,8 @@ Vagrant.configure("2") do |config|
   		cp /data/default /etc/nginx/sites-available/default
   		systemctl restart nginx
 
+  		# Copy configuration scripts
+  		cp /data/psaas-cli.sh /etc/psaas-devops-exercise/psaas-cli.sh
+
   SHELL
 end
