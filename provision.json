@@ -61,5 +61,17 @@
         ]
       ]
     }
-  ]
+  ],
+    "provisioners": [
+      {
+          "type": "file",
+          "source": "./data/",
+          "destination": "/home/vagrant"
+      },
+      {
+          "type": "shell",
+          "script": "./packer-provision.sh",
+          "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+      }
+    ]
 }
