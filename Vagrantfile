@@ -15,6 +15,7 @@ Vagrant.configure("2") do |config|
 
   		# Copy service files for auto upgrade and start timer
   		cp /data/update.sh /etc/psaas-devops-exercise/update.sh
+  		cp /data/init.sh /etc/psaas-devops-exercise/init.sh
   		cp /data/psaas-update* /etc/systemd/system/
   		systemctl daemon-reload
   		systemctl enable psaas-update.timer
