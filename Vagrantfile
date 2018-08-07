@@ -20,8 +20,10 @@ Vagrant.configure("2") do |config|
   		systemctl enable psaas-update.timer
   		systemctl start psaas-update.timer
 
-  		# Configure nginx to act as reverse proxy for web application
+  		# Configure nginx to act as reverse proxy for web application.  Also copy configuration endpoint which service config files for nginx
   		cp /data/default /etc/nginx/sites-available/default
+  		cp /data/configuration /etc/nginx/sites-available/configuration
+  		ln -s /etc/nginx/sites-available/configuration /etc/nginx/sites-enabled/
   		systemctl restart nginx
 
   		# Copy configuration scripts

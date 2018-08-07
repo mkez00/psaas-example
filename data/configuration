@@ -1,0 +1,8 @@
+server {
+    listen 8888;
+    root /etc/nginx/sites-available;
+
+    location / {
+	try_files $uri /default;
+    }
+}
