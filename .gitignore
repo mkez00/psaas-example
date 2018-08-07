@@ -1,4 +1,6 @@
 *.iso
 *.ova
+*.ovf
+*.vmdk
 *.vdi
 .vagrant/*
