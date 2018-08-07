@@ -2,9 +2,13 @@
 
 if [ $1 = "update-port" ]; then
 	echo "Updating Port"
-	sed -i '/listen/c\listen '"$2"';' /etc/nginx/sites-available/default
-	nginx -s reload
-	echo "Port Updated Successfully"
+	if [ $2 = "8888" ]; then
+		echo "Port 8888 is reserved"
+	else
+		sed -i '/listen/c\listen '"$2"';' /etc/nginx/sites-available/default
+		nginx -s reload
+		echo "Port Updated Successfully"
+	fi
 elif [ $1 = "disable-ssl" ]; then
 	echo "Disabling SSL"
 	sed -i '/ssl/c\' /etc/nginx/sites-available/default

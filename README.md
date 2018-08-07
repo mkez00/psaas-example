@@ -30,8 +30,4 @@ Check the status of the initial build:
 Building with Packer
 =
 
-To build the OVA with Packer (This is not working yet...):  
-
-1) Run `packer build provision.json` from project root
-
-Currently this step is failing on login.  Need to also include provisioning that is being done in Vagrantfile.
+To build the OVA with Packer run `packer build provision.json` from the project root
