@@ -24,7 +24,7 @@ To disable SSL for the appliance login to the appliance and run the following: `
 Migration Information
 -
 
-After building/downloading a new OVA provision the appiance on the same network as the legacy OVA.  On first boot the appliance will automatically scan for existing appliances and will automatically update the new appliance with the legacy appliance settings.  These settings include:
+After building/downloading a new OVA you can provision the appiance on the same network as the legacy OVA.  On first boot the appliance will automatically scan for existing appliances and will automatically update the new appliance with the legacy appliance settings.  These settings include:
 
 - Port number
 - SSL Settings
