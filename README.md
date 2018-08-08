@@ -1,8 +1,6 @@
 Overview
 =
 
-PSaas Exercise.  In progress..
-
 Auto Upgrade
 -
 
@@ -12,6 +10,21 @@ Port Configuration
 -
 
 Login to the appliance and run the following to update the port the application is being served on: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh update-port <PORT_NUMBER>`
+
+Enable SSl
+-
+
+To enable SSL for the appliance login to the appliance and run the following: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh enable-ssl`
+
+Disable SSl
+-
+
+To disable SSL for the appliance login to the appliance and run the following: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh disable-ssl`
+
+Building with Packer
+=
+
+To build the OVA with Packer run `packer build provision.json` from the project root
 
 Testing with Vagrant
 =
@@ -26,8 +39,3 @@ Check the status of the initial build:
 
 1) Run `vagrant ssh` from project root
 2) Run `sudo systemctl status psaas-update.service` to see status of upgrade job
-
-Building with Packer
-=
-
-To build the OVA with Packer run `packer build provision.json` from the project root

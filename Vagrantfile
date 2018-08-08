@@ -13,6 +13,9 @@ Vagrant.configure("2") do |config|
   		apt update
   		apt install docker.io unzip nginx jq -y
 
+  		# create ssl directory in nginx directory
+		mkdir /etc/nginx/ssl
+
   		# Copy service files for auto upgrade and start timer
   		cp /data/update.sh /etc/psaas-devops-exercise/update.sh
   		cp /data/init.sh /etc/psaas-devops-exercise/init.sh
