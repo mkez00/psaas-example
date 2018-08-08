@@ -13,6 +13,7 @@ if [ ! -f /var/psaas-devops-exercise/.bootstrap ]; then
 		        if [ $x != $myip ]; then
 		                status=$(curl -s -o /dev/null -w "%{http_code}" -m 5 $x:8888)
 		                if [ $status -eq "200" ]; then
+		                		echo "Found existing config at: " $x
 		                        wget $x:8888 -O /etc/nginx/sites-available/index.html
         						mv /etc/nginx/sites-available/index.html /etc/nginx/sites-available/default
 		                fi
