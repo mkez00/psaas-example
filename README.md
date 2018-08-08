@@ -11,6 +11,15 @@ Port Configuration
 
 Login to the appliance and run the following to update the port the application is being served on: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh update-port <PORT_NUMBER>`
 
+Copy Certificate and Private Key
+-
+
+To update/copy your signed certificate to the appliance, run the following commands:
+
+1) Secure copy the certificate to the appliance: `scp <CERTIFICATE> vagrant@<IP_ADDRESS_OF_APPLIANCE>:/home/vagrant`
+2) Secure copy the private key to the appliance: `scp <PRIVATE_KEY> vagrant@<IP_ADDRESS_OF_APPLIANCE>:/home/vagrant`
+3) Connect to the appliance and run the copy utility: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh copy-cert <CERTIFICATE> <PRIVATE_KEY>`
+
 Enable SSL
 -
 
