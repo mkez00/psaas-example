@@ -1,0 +1,8 @@
+[Unit]
+Description=PSaas Exercise Startup Service. Initializes the appliance.
+
+[Service]
+ExecStart=/bin/bash /etc/psaas-devops-exercise/init.sh
+
+[Install]
+WantedBy=multi-user.target

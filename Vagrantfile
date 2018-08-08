@@ -18,6 +18,10 @@ Vagrant.configure("2") do |config|
   		cp /data/init.sh /etc/psaas-devops-exercise/init.sh
   		cp /data/psaas-update* /etc/systemd/system/
   		systemctl daemon-reload
+
+  		systemctl enable psaas-startup.service
+  		systemctl start psaas-startup.service
+
   		systemctl enable psaas-update.timer
   		systemctl start psaas-update.timer
 
