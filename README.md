@@ -21,6 +21,16 @@ Disable SSl
 
 To disable SSL for the appliance login to the appliance and run the following: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh disable-ssl`
 
+Migration Information
+-
+
+After building/downloading a new OVA provision the appiance on the same network as the legacy OVA.  On first boot the appliance will automatically scan for existing appliances and will automatically update the new appliance with the legacy appliance settings.  These settings include:
+
+- Port number
+- SSL Settings
+
+The appliance will expose its settings on port 8888 for future appliances to scan for and update from.
+
 Building with Packer
 =
 
