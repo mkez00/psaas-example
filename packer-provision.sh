@@ -6,7 +6,7 @@ mkdir /var/psaas-devops-exercise /etc/psaas-devops-exercise
 # Install required tools
 apt update
 apt upgrade -y
-apt install docker.io unzip nginx jq curl -y
+apt install docker.io unzip nginx jq curl nmap -y
 
 # Copy service files for auto upgrade and start timer
 cp /home/vagrant/update.sh /etc/psaas-devops-exercise/update.sh
