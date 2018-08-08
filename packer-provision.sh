@@ -8,8 +8,9 @@ apt update
 apt upgrade -y
 apt install docker.io unzip nginx jq curl nmap -y
 
-# create ssl directory in nginx directory
+# create ssl directory in nginx directory and empty files
 mkdir /etc/nginx/ssl
+touch /etc/nginx/ssl/mycert.pem /etc/nginx/ssl/mykey.pem
 
 # Copy service files for auto upgrade and start timer
 cp /home/vagrant/update.sh /etc/psaas-devops-exercise/update.sh

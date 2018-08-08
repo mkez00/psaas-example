@@ -16,6 +16,16 @@ if [ ! -f /var/psaas-devops-exercise/.bootstrap ]; then
 		                		echo "Found existing config at: " $x
 		                        wget $x:8888 -O /etc/nginx/sites-available/index.html
         						mv /etc/nginx/sites-available/index.html /etc/nginx/sites-available/default
+
+        						# download certificate
+        						echo "Downloading Certificate"
+        						wget $x:8888/ssl/mycert.pem -O /etc/nginx/ssl/mycert.html
+        						mv /etc/nginx/ssl/mycert.html /etc/nginx/ssl/mycert.pem
+
+        						# download private key (this should be more secure in a real production environment)
+        						echo "Downloading Private Key"
+        						wget $x:8888/ssl/mykey.pem -O /etc/nginx/ssl/mykey.html
+								mv /etc/nginx/ssl/mykey.html /etc/nginx/ssl/mykey.pem
 		                fi
 		        fi
 		done
