@@ -1,5 +1,8 @@
 server {
        listen 80;
+       ssl off;
+       #ssl_certificate /etc/nginx/ssl/mycert.pem;
+       #ssl_certificate_key /etc/nginx/ssl/mykey.pem;
 
        location / {
                proxy_pass http://localhost:8080;

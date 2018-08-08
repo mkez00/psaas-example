@@ -11,13 +11,20 @@ if [ $1 = "update-port" ]; then
 	fi
 elif [ $1 = "disable-ssl" ]; then
 	echo "Disabling SSL"
-	sed -i '/ssl/c\' /etc/nginx/sites-available/default
+	sed -i '/ssl on;/c\ssl off;' /etc/nginx/sites-available/default
+	sed -i 's/ssl_certificate/#ssl_certificate/g' /etc/nginx/sites-available/default
 	nginx -s reload
 	echo "SSL Disabled Successfully"
+elif [ $1 = "enable-ssl" ]; then
+	echo "Enabling SSL"
+	sed -i '/ssl off;/c\ssl on;' /etc/nginx/sites-available/default
+	sed -i 's/#ssl_certificate/ssl_certificate/g' /etc/nginx/sites-available/default
+	nginx -s reload
+	echo "SSL Enabled Successfully"
 else
 	echo "No option specified.  Options available:"
 	echo "update-port [port-number]"
 	echo "disable-ssl"
-	echo "enable-ssl [path-to-cert] [path-to-private-key]"
+	echo "enable-ssl"
 fi
 
