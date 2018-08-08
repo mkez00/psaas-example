@@ -21,9 +21,15 @@ elif [ $1 = "enable-ssl" ]; then
 	sed -i 's/#ssl_certificate/ssl_certificate/g' /etc/nginx/sites-available/default
 	nginx -s reload
 	echo "SSL Enabled Successfully"
+elif [ $1 = "copy-cert" ]; then
+	echo "Copying Certificate and Private Key"
+	mv $2 /etc/nginx/ssl/mycert.pem
+	mv $3 /etc/nginx/ssl/mykey.pem
+	echo "Certificate and Private Key Successfully Copied"
 else
 	echo "No option specified.  Options available:"
 	echo "update-port [port-number]"
+	echo "copy-cert [certificate-file-location] [private-key-file-location]"
 	echo "disable-ssl"
 	echo "enable-ssl"
 fi
