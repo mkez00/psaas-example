@@ -11,12 +11,12 @@ Port Configuration
 
 Login to the appliance and run the following to update the port the application is being served on: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh update-port <PORT_NUMBER>`
 
-Enable SSl
+Enable SSL
 -
 
 To enable SSL for the appliance login to the appliance and run the following: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh enable-ssl`
 
-Disable SSl
+Disable SSL
 -
 
 To disable SSL for the appliance login to the appliance and run the following: `sudo sh /etc/psaas-devops-exercise/psaas-cli.sh disable-ssl`
