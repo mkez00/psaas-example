@@ -3,7 +3,7 @@ Description=PSaaS Web Application Update Timer
 After=psaas-startup.service
 
 [Timer]
-OnUnitActiveSec=60s
+OnUnitActiveSec=20s
 OnBootSec=10s
 
 [Install]
