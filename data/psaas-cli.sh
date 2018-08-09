@@ -2,13 +2,14 @@
 
 if [ $1 = "update-port" ]; then
 	echo "Updating Port"
-	if [ $2 = "8888" ]; then
-		echo "Port 8888 is reserved"
-	else
+	freeport=$(nc -z localhost $2 || echo "yes")
+	if [ ! -z "$freeport" ]; then
 		sed -i '/listen/c\listen '"$2"';' /etc/nginx/sites-available/default
 		nginx -s reload
 		echo "Port Updated Successfully"
-	fi
+	else
+		echo "Port is already in use! Not updating"
+	fi	
 elif [ $1 = "disable-ssl" ]; then
 	echo "Disabling SSL"
 	sed -i '/ssl on;/c\ssl off;' /etc/nginx/sites-available/default
