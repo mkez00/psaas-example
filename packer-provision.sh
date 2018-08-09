@@ -30,3 +30,9 @@ ln -s /etc/nginx/sites-available/configuration /etc/nginx/sites-enabled/
 
 # Copy configuration scripts
 cp /home/vagrant/psaas-cli.sh /etc/psaas-devops-exercise/psaas-cli.sh
+
+# Due to slow build of default web application Docker image, baking it into appliance for less waiting during demo
+wget https://github.com/auth0/psaas-devops-exercise/archive/master.zip -P /etc/psaas-devops-exercise/
+unzip -o /etc/psaas-devops-exercise/master.zip -d /etc/psaas-devops-exercise/
+cd /etc/psaas-devops-exercise/psaas-devops-exercise-master
+docker build -t auth0/psaas-devops-exercise:latest .
