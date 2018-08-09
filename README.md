@@ -1,11 +1,6 @@
 Overview
 =
 
-Auto Upgrade
--
-
-The appliance will automatically poll the master branch of the GitHub repository for changes.  When a new commit is applied to master the appliance will automatically upgrade the Docker image and redeploy the application.  This service is invoked every 60 seconds.
-
 Port Configuration
 -
 
@@ -39,6 +34,11 @@ After building/downloading a new OVA you can provision the appiance on the same 
 - SSL Settings
 
 The appliance will expose its settings on port 8888 for future appliances to scan for and update from.
+
+Auto Upgrade
+-
+
+The appliance will automatically poll the master branch of the GitHub repository for changes.  When a new commit is applied to master the appliance will automatically upgrade the Docker image and redeploy the application.  This service is invoked every 20 seconds.  The appliance deploys duplicate copies of the web application containers (bound to ports 8080, and 8081) and configures NGINX to act as a load balancer for these containers.  When the upgrade commences, rolling updates occur to each container offering high availability to the web application.
 
 Building with Packer
 =
