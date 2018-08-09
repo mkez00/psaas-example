@@ -4,7 +4,7 @@ roll_update(){
 	container=$(docker ps | grep :$port | cut -d " " -f1)
   	docker stop $container
   	docker rm $container
-  	docker run -p $port:3000 -d auth0/psaas-devops-exercise:latest
+  	docker run -p 127.0.0.1:$port:3000 -d auth0/psaas-devops-exercise:latest
 }
 
 echo "Checking for update"
