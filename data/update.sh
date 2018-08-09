@@ -1,5 +1,12 @@
 #!/bin/bash
 
+roll_update(){
+	container=$(docker ps | grep :$port | cut -d " " -f1)
+  	docker stop $container
+  	docker rm $container
+  	docker run -p $port:3000 -d auth0/psaas-devops-exercise:latest
+}
+
 echo "Checking for update"
 
 # Get latest commit from master branch and compare to the last one stored when application was last built
@@ -19,16 +26,16 @@ if [ "$latesthash" != "$lasthash" ]; then
   	unzip -o /etc/psaas-devops-exercise/master.zip -d /etc/psaas-devops-exercise/
   	cd /etc/psaas-devops-exercise/psaas-devops-exercise-master
 
-
   	# Build Docker web application
   	docker build -t auth0/psaas-devops-exercise:latest .
 
-	# Stop and remove all running containers (this isn't ideal)
-  	docker stop $(docker ps -a -q)
-	docker rm $(docker ps -a -q)
+  	# roll update to first container
+  	port=8081
+  	roll_update
 
-	# Run latest version of web application
-  	docker run -p 8080:3000 -d auth0/psaas-devops-exercise:latest
+  	# roll update to second container
+  	port=8080
+  	roll_update
 
   	echo "Update complete"
 else

@@ -24,6 +24,7 @@ systemctl enable psaas-update.timer
 systemctl enable psaas-startup.service
 
 # Configure nginx to act as reverse proxy for web application.  Also copy configuration endpoint which service config files for nginx
+cp /home/vagrant/nginx.conf /etc/nginx/nginx.conf
 cp /home/vagrant/default /etc/nginx/sites-available/default
 cp /home/vagrant/configuration /etc/nginx/sites-available/configuration
 ln -s /etc/nginx/sites-available/configuration /etc/nginx/sites-enabled/
